@@ -1,14 +1,13 @@
-from flask import Blueprint
 from flask import Flask
 from flask import render_template
-from menu_1 import bp as menu_1_bp
-from menu_2 import bp as menu_2_bp
+from views import menu_0
+from views import menu_1
+from views import menu_2
 
 app = Flask(__name__, static_url_path='', static_folder='static')
-root_bp = Blueprint('root', __name__, template_folder='/')
-app.register_blueprint(root_bp, url_prifix='/')
-app.register_blueprint(menu_1_bp, url_prifix='/menu_1')
-app.register_blueprint(menu_2_bp, url_prifix='/menu_2')
+app.register_blueprint(menu_0.bp)
+app.register_blueprint(menu_1.bp)
+app.register_blueprint(menu_2.bp)
 
 
 @app.errorhandler(400)
